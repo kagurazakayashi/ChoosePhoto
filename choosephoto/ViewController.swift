@@ -113,36 +113,45 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             print("视频捕获输出设置失败！")
             return false
         }
-        let 视频捕获线程 = DispatchQueue(label: "subQueue")
+        let 视频捕获线程 = DispatchQueue(label: "cameraQueue")
         视频捕获输出.setSampleBufferDelegate(self, queue: 视频捕获线程)
         
         视频捕获预览 = AVCaptureVideoPreviewLayer(session: 视频捕获会话)
         视频捕获预览.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
         视频捕获预览.videoGravity = AVLayerVideoGravity.resizeAspectFill
         self.view.layer.addSublayer(视频捕获预览)
-//        视频捕获预览.isHidden = true
+        视频捕获预览.isHidden = true
         
         视频捕获会话.commitConfiguration()
         视频捕获启动 = true
         return true
     }
     
-    func 从数据流创建图片(缓冲区:CMSampleBuffer!) -> UIImage {
-        let 图片缓冲区:CVImageBuffer = CMSampleBufferGetImageBuffer(缓冲区)!
-        CVPixelBufferLockBaseAddress(图片缓冲区, CVPixelBufferLockFlags(rawValue: 0))
-        let 逐行大小:size_t = CVPixelBufferGetBytesPerRow(图片缓冲区)
-        let 宽度:size_t = CVPixelBufferGetWidth(图片缓冲区)
-        let 高度:size_t = CVPixelBufferGetHeight(图片缓冲区)
-        let 安全点:UnsafeMutableRawPointer = CVPixelBufferGetBaseAddress(图片缓冲区)!
+    //TODO: 未解决的错误: 始终触发 print("缓冲区中没有数据！") 。而预期是此提示不应该被触发。
+    func 从数据流创建图片(缓冲区:CMSampleBuffer!) -> UIImage? {
+        let 图片缓冲区:CVImageBuffer? = CMSampleBufferGetImageBuffer(缓冲区)
+        if (图片缓冲区 == nil) {
+            print("缓冲区中没有数据！")
+            return nil
+        }
+        CVPixelBufferLockBaseAddress(图片缓冲区!, CVPixelBufferLockFlags(rawValue: 0))
+        let 逐行大小:size_t = CVPixelBufferGetBytesPerRow(图片缓冲区!)
+        let 宽度:size_t = CVPixelBufferGetWidth(图片缓冲区!)
+        let 高度:size_t = CVPixelBufferGetHeight(图片缓冲区!)
+        let 安全点:UnsafeMutableRawPointer = CVPixelBufferGetBaseAddress(图片缓冲区!)!
         let 位图信息:UInt32 = CGBitmapInfo.byteOrder32Little.rawValue | CGImageAlphaInfo.premultipliedFirst.rawValue
         let 色彩空间: CGColorSpace = CGColorSpaceCreateDeviceRGB()
         let 画布:CGContext = CGContext(data: 安全点, width: 宽度, height: 高度, bitsPerComponent: 8, bytesPerRow: 逐行大小, space: 色彩空间, bitmapInfo: 位图信息)!
         let 取出图片: CGImage = 画布.makeImage()!
-        CVPixelBufferUnlockBaseAddress(图片缓冲区, CVPixelBufferLockFlags(rawValue: 0))
+        CVPixelBufferUnlockBaseAddress(图片缓冲区!, CVPixelBufferLockFlags(rawValue: 0))
         return UIImage(cgImage: 取出图片, scale: 1, orientation: UIImageOrientation.right)
     }
     
+    //TODO: 未解决的错误: 每隔很久该代理方法才会被调用一次。而预期是实时被调用，以便处理摄像头获取到的每一帧图像。
     func captureOutput(_ output: AVCaptureOutput, didDrop sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        if (视频捕获启动 == false) {
+            return
+        }
         let 当前图片 = 从数据流创建图片(缓冲区: sampleBuffer)
         DispatchQueue.main.async() { () -> Void in
             self.实时预览框.image = 当前图片
