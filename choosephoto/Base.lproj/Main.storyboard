@@ -65,6 +65,11 @@
                             <constraint firstItem="Iqy-m2-8Bo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="rp8-nt-BqR"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="图像列表框" destination="EbZ-Wk-QLD" id="9Fa-KG-ecT"/>
+                        <outlet property="实时预览框" destination="Xid-YU-bru" id="Mdi-MC-rCA"/>
+                        <outlet property="底部工具栏" destination="Iqy-m2-8Bo" id="Rfa-xf-o4Q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
