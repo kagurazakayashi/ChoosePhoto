@@ -29,6 +29,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var 正在复位底部工具栏:Bool = false
     var 列表数据:[UIImage] = [UIImage]()
     var 正在使用后摄像头 = false
+    var 缩略图布局 = UICollectionViewFlowLayout()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +54,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     func 初始化外观() {
         实时预览框.layer.borderWidth = 1
         实时预览框.layer.borderColor = 全局主题颜色[2]
+        图像列表框.collectionViewLayout = 缩略图布局
+        缩略图布局.itemSize = CGSize(width: 图像列表框.frame.width / 3, height: 图像列表框.frame.height / 3)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
@@ -94,6 +97,10 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
     }
     func 补光() {
+        if !正在使用后摄像头 {
+            print("前置摄像头没有闪光灯")
+            return
+        }
         if 视频捕获设备 == nil {
             print("没有找到闪光灯。")
             return

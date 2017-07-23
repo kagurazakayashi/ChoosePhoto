@@ -40,7 +40,7 @@ class ImgViewController: UIViewController, UITabBarDelegate {
                 图片归位()
                 break
             case 1004: //分享
-                let 分享控制器:UIActivityViewController = UIActivityViewController(activityItems: [图片框.image], applicationActivities: nil)
+                let 分享控制器:UIActivityViewController = UIActivityViewController(activityItems: [图片框.image!], applicationActivities: nil)
                 self.present(分享控制器, animated: true, completion: nil)
                 break
             default:
