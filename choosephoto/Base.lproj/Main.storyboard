@@ -27,11 +27,11 @@
                                     <constraint firstAttribute="height" constant="49" id="w9T-Sy-dkF"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem tag="1005" title="切换" id="liX-U7-wpA"/>
-                                    <tabBarItem tag="1004" title="补光" id="PGz-Vk-yag"/>
-                                    <tabBarItem tag="1002" title="拍摄" id="X5J-LI-LCv"/>
-                                    <tabBarItem tag="1001" title="清空" id="9er-fh-bMm"/>
-                                    <tabBarItem tag="1003" title="设置" id="72q-qw-naV"/>
+                                    <tabBarItem tag="1005" title="切换" image="switch_camera.png" id="liX-U7-wpA"/>
+                                    <tabBarItem tag="1004" title="补光" image="lightbulb_outline.png" id="PGz-Vk-yag"/>
+                                    <tabBarItem tag="1002" title="拍摄" image="add_a_photo.png" id="X5J-LI-LCv"/>
+                                    <tabBarItem tag="1001" title="清空" image="delete_forever.png" id="9er-fh-bMm"/>
+                                    <tabBarItem tag="1003" title="设置" image="build.png" id="72q-qw-naV"/>
                                 </items>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -149,10 +149,10 @@
                                 <rect key="frame" x="0.0" y="519" width="320" height="49"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29545697773972601" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
-                                    <tabBarItem tag="1001" title="返回" id="5Qz-d9-p73"/>
-                                    <tabBarItem tag="1003" title="复位" id="LcB-vt-AVD"/>
-                                    <tabBarItem tag="1002" title="保存" id="Hax-m4-06S"/>
-                                    <tabBarItem tag="1004" title="分享" id="m2Y-wP-Kad"/>
+                                    <tabBarItem tag="1001" title="返回" image="chevron_left.png" id="5Qz-d9-p73"/>
+                                    <tabBarItem tag="1003" title="复位" image="select_all.png" id="LcB-vt-AVD"/>
+                                    <tabBarItem tag="1002" title="保存" image="move_to_inbox.png" id="Hax-m4-06S"/>
+                                    <tabBarItem tag="1004" title="分享" image="share.png" id="m2Y-wP-Kad"/>
                                 </items>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="selectedImageTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -195,4 +195,15 @@
             <point key="canvasLocation" x="900" y="123.59154929577466"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="add_a_photo.png" width="30" height="30"/>
+        <image name="build.png" width="30" height="30"/>
+        <image name="chevron_left.png" width="30" height="30"/>
+        <image name="delete_forever.png" width="30" height="30"/>
+        <image name="lightbulb_outline.png" width="30" height="30"/>
+        <image name="move_to_inbox.png" width="30" height="30"/>
+        <image name="select_all.png" width="30" height="30"/>
+        <image name="share.png" width="30" height="30"/>
+        <image name="switch_camera.png" width="30" height="30"/>
+    </resources>
 </document>
