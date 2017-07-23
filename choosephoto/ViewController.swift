@@ -24,17 +24,30 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var 视频捕获会话: AVCaptureSession!
     var 视频捕获输入: AVCaptureDeviceInput!
     var 视频捕获输出: AVCaptureVideoDataOutput!
+    var 视频捕获设备:AVCaptureDevice? = nil
     var 视频捕获启动:Bool = false
     var 正在复位底部工具栏:Bool = false
     var 列表数据:[UIImage] = [UIImage]()
+    var 正在使用后摄像头 = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if 初始化照相机() == false {
-            return
-        }
         初始化外观()
         底部工具栏.delegate = self
+        if 检查是否有摄像头权限() == false {
+            print("没有权限访问摄像头")
+            return
+        }
+        视频捕获会话 = AVCaptureSession()
+        视频捕获输出 = AVCaptureVideoDataOutput()
+        if 前后摄像头切换() == false {
+            print("摄像头获取失败")
+            return
+        }
+        if (初始化照相机() == false) {
+            print("照相机初始化失败")
+            return
+        }
     }
     
     func 初始化外观() {
@@ -59,6 +72,12 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             case 1003: //设置
                 打开系统设置页面()
                 break
+            case 1004: //补光
+                补光()
+                break
+            case 1005: //前后摄像头切换
+                前后摄像头切换()
+                break
             default:
                 break
             }
@@ -73,6 +92,84 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             列表数据.append(实时预览框.image!)
             图像列表框.reloadData()
         }
+    }
+    func 补光() {
+        if 视频捕获设备 == nil {
+            print("没有找到闪光灯。")
+            return
+        }
+        if 视频捕获设备!.torchMode == AVCaptureDevice.TorchMode.off{
+            do {
+                try 视频捕获设备!.lockForConfiguration()
+            } catch {
+                return
+            }
+            视频捕获设备!.torchMode = .on
+            视频捕获设备!.unlockForConfiguration()
+        } else {
+            do {
+                try 视频捕获设备!.lockForConfiguration()
+            } catch {
+                return
+            }
+            视频捕获设备!.torchMode = .off
+            视频捕获设备!.unlockForConfiguration()
+        }
+    }
+    func 前后摄像头切换() -> Bool {
+//        断开摄像头连接()
+        if 正在使用后摄像头 {
+            视频捕获设备 = 获得摄像头(摄像头位置: AVCaptureDevice.Position.front)
+        } else {
+            视频捕获设备 = 获得摄像头(摄像头位置: AVCaptureDevice.Position.back)
+        }
+        正在使用后摄像头 = !正在使用后摄像头
+        if (视频捕获设备 == nil) {
+            print("没能启动视频捕获设备")
+            return false
+        }
+        视频捕获会话.beginConfiguration()
+        if 视频捕获启动 {
+            视频捕获会话.removeInput(视频捕获输入)
+        }
+        do{
+            try 视频捕获输入 = AVCaptureDeviceInput(device: 视频捕获设备!)
+        } catch let error as NSError {
+            print("视频捕获失败: ",error)
+            return false
+        }
+        if(视频捕获会话.canAddInput(视频捕获输入)){
+            视频捕获会话.addInput(视频捕获输入)
+        } else {
+            print("视频捕获输入设置失败！")
+            return false
+        }
+        视频捕获会话.commitConfiguration()
+        return true
+    }
+    func 断开摄像头连接() {
+        if 视频捕获启动 {
+            视频捕获会话.beginConfiguration()
+            视频捕获会话.removeInput(视频捕获输入)
+            视频捕获会话.removeOutput(视频捕获输出)
+            视频捕获会话.commitConfiguration()
+        }
+        视频捕获会话 = nil
+        视频捕获输入 = nil
+        视频捕获输出 = nil
+        视频捕获设备 = nil
+        实时预览框.image = nil
+        视频捕获启动 = false
+    }
+    func 获得摄像头(摄像头位置:AVCaptureDevice.Position) -> AVCaptureDevice? {
+        let 视频设备会话:AVCaptureDevice.DiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInWideAngleCamera], mediaType: AVMediaType.video, position: 摄像头位置)
+        let 视频设备列表 = 视频设备会话.devices
+        for 视频设备:AVCaptureDevice in 视频设备列表 {
+            if 视频设备.position == 摄像头位置 {
+                return 视频设备
+            }
+        }
+        return nil
     }
     
     //<tabBar代理>
@@ -142,22 +239,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     
     func 初始化照相机() -> Bool {
-        视频捕获会话 = AVCaptureSession()
-        let 视频捕获设备:AVCaptureDevice? = AVCaptureDevice.default(for: AVMediaType.video)
-        if (视频捕获设备 == nil) {
-            print("没能启动视频捕获设备")
-            return false
-        }
-        视频捕获输出 = AVCaptureVideoDataOutput()
-        do{
-            try 视频捕获输入 = AVCaptureDeviceInput(device: 视频捕获设备!)
-        } catch let error as NSError {
-            print("视频捕获失败: ",error)
-            return false
-        }
-        if 检查是否有摄像头权限() == false {
-            return false
-        }
         视频捕获会话.beginConfiguration()
         视频捕获会话.sessionPreset = AVCaptureSession.Preset.vga640x480
         let 视频像素模式K = kCVPixelBufferPixelFormatTypeKey as String
@@ -167,12 +248,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         let 视频像素高度K = kCVPixelBufferHeightKey as String
         let 视频像素高度V = NSNumber(value: 720)
         视频捕获输出.videoSettings = [视频像素模式K:视频像素模式V, 视频像素宽度K:视频像素宽度V, 视频像素高度K:视频像素高度V]
-        if(视频捕获会话.canAddInput(视频捕获输入)){
-            视频捕获会话.addInput(视频捕获输入)
-        } else {
-            print("视频捕获输入设置失败！")
-            return false
-        }
         if(视频捕获会话.canAddOutput(视频捕获输出)){
             视频捕获会话.addOutput(视频捕获输出)
         } else {
@@ -181,18 +256,15 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
         let 视频捕获线程 = DispatchQueue(label: "cameraQueue")
         视频捕获输出.setSampleBufferDelegate(self, queue: 视频捕获线程)
-        
 //        视频捕获预览 = AVCaptureVideoPreviewLayer(session: 视频捕获会话)
 //        视频捕获预览.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
 //        视频捕获预览.videoGravity = AVLayerVideoGravity.resizeAspectFill
 //        self.view.layer.addSublayer(视频捕获预览)
-        
         视频捕获会话.commitConfiguration()
         视频捕获启动 = true
         return true
     }
     
-    //TODO: 未解决的错误: 始终触发 print("缓冲区中没有数据！") 。而预期是此提示不应该被触发。
     func 从数据流创建图片(缓冲区:CMSampleBuffer!) -> UIImage? {
         let 图片缓冲区:CVImageBuffer? = CMSampleBufferGetImageBuffer(缓冲区)
         if (图片缓冲区 == nil) {
@@ -212,7 +284,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         return UIImage(cgImage: 取出图片, scale: 1, orientation: UIImageOrientation.right)
     }
     
-    //TODO: 未解决的错误: 每隔很久该代理方法才会被调用一次。而预期是实时被调用，以便处理摄像头获取到的每一帧图像。
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         if (视频捕获启动 == false) {
             return

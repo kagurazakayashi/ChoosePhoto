@@ -27,8 +27,10 @@
                                     <constraint firstAttribute="height" constant="49" id="w9T-Sy-dkF"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem tag="1001" title="清空" id="9er-fh-bMm"/>
+                                    <tabBarItem tag="1005" title="切换" id="liX-U7-wpA"/>
+                                    <tabBarItem tag="1004" title="补光" id="PGz-Vk-yag"/>
                                     <tabBarItem tag="1002" title="拍摄" id="X5J-LI-LCv"/>
+                                    <tabBarItem tag="1001" title="清空" id="9er-fh-bMm"/>
                                     <tabBarItem tag="1003" title="设置" id="72q-qw-naV"/>
                                 </items>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
