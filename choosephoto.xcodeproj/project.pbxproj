@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		530DAF701F2398FE009EFF97 /* ImgCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530DAF6F1F2398FE009EFF97 /* ImgCollectionViewCell.swift */; };
+		53CDF0731F24A52D00537BC6 /* ImgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CDF0721F24A52D00537BC6 /* ImgViewController.swift */; };
 		53EAA43E1F224849005CEBA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EAA43D1F224849005CEBA5 /* AppDelegate.swift */; };
 		53EAA4401F224849005CEBA5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EAA43F1F224849005CEBA5 /* ViewController.swift */; };
 		53EAA4431F224849005CEBA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53EAA4411F224849005CEBA5 /* Main.storyboard */; };
@@ -18,6 +19,8 @@
 /* Begin PBXFileReference section */
 		530DAF6F1F2398FE009EFF97 /* ImgCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgCollectionViewCell.swift; sourceTree = "<group>"; };
 		537169EA1F22E32D00B3737A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		53CDF0711F249A8E00537BC6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		53CDF0721F24A52D00537BC6 /* ImgViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgViewController.swift; sourceTree = "<group>"; };
 		53EAA43A1F224848005CEBA5 /* choosephoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = choosephoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53EAA43D1F224849005CEBA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53EAA43F1F224849005CEBA5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +44,7 @@
 		537169E91F22E32C00B3737A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				53CDF0711F249A8E00537BC6 /* QuartzCore.framework */,
 				537169EA1F22E32D00B3737A /* AVFoundation.framework */,
 			);
 			name = Frameworks;
@@ -73,6 +77,7 @@
 				53EAA4461F224849005CEBA5 /* LaunchScreen.storyboard */,
 				53EAA4491F224849005CEBA5 /* Info.plist */,
 				530DAF6F1F2398FE009EFF97 /* ImgCollectionViewCell.swift */,
+				53CDF0721F24A52D00537BC6 /* ImgViewController.swift */,
 			);
 			path = choosephoto;
 			sourceTree = "<group>";
@@ -150,6 +155,7 @@
 			files = (
 				53EAA4401F224849005CEBA5 /* ViewController.swift in Sources */,
 				53EAA43E1F224849005CEBA5 /* AppDelegate.swift in Sources */,
+				53CDF0731F24A52D00537BC6 /* ImgViewController.swift in Sources */,
 				530DAF701F2398FE009EFF97 /* ImgCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

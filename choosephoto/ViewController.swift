@@ -8,6 +8,10 @@
 
 import UIKit
 import AVFoundation
+import QuartzCore
+
+public let 全局主题颜色:[CGColor] = [UIColor(red: 0, green: 158/255, blue: 212/255, alpha: 1).cgColor,UIColor(red: 39/255, green: 224/255, blue: 36/255, alpha: 1).cgColor,UIColor(red: 226/255, green: 104/255, blue: 36/255, alpha: 1).cgColor]
+public let 全局故事板:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, UIAlertViewDelegate, UITabBarDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -26,8 +30,16 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        初始化照相机()
+        if 初始化照相机() == false {
+            return
+        }
+        初始化外观()
         底部工具栏.delegate = self
+    }
+    
+    func 初始化外观() {
+        实时预览框.layer.borderWidth = 1
+        实时预览框.layer.borderColor = 全局主题颜色[2]
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
@@ -42,10 +54,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                 图像列表框.reloadData()
                 break
             case 1002: //拍摄
-                if (实时预览框.image != nil) {
-                    列表数据.append(实时预览框.image!)
-                    图像列表框.reloadData()
-                }
+                缓存照片()
                 break
             case 1003: //设置
                 打开系统设置页面()
@@ -55,6 +64,15 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             }
         }
 //        正在复位底部工具栏 = true
+    }
+    
+    func 缓存照片() {
+        if 列表数据.count > 30 {
+            print("一次只能临时保存30张。")
+        } else if (实时预览框.image != nil) {
+            列表数据.append(实时预览框.image!)
+            图像列表框.reloadData()
+        }
     }
     
     //<tabBar代理>
@@ -70,10 +88,11 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         return 列表项
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let 图片浏览器:ImgViewController = 全局故事板.instantiateViewController(withIdentifier: "ImgViewController") as! ImgViewController
+        self.present(图片浏览器, animated: true, completion: nil)
+        图片浏览器.装入图片(图片: 列表数据[indexPath.row])
     }
     //</tabBar代理>
-    
     func 打开系统设置页面() {
         let 系统设置页面地址:URL = URL(string: UIApplicationOpenSettingsURLString)!
         if UIApplication.shared.canOpenURL(系统设置页面地址) {

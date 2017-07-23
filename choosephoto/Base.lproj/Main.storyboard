@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -11,17 +11,17 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="choosephoto" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="choosephoto" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tabBar tag="1000" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="Iqy-m2-8Bo">
-                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <rect key="frame" x="0.0" y="519" width="320" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="w9T-Sy-dkF"/>
@@ -39,7 +39,7 @@
                                 </connections>
                             </tabBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EbZ-Wk-QLD">
-                                <rect key="frame" x="0.0" y="20" width="375" height="470"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="371"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hUZ-Tg-x1c">
                                     <size key="itemSize" width="128" height="128"/>
@@ -78,7 +78,7 @@
                                 </connections>
                             </collectionView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xid-YU-bru">
-                                <rect key="frame" x="0.0" y="490" width="375" height="128"/>
+                                <rect key="frame" x="0.0" y="391" width="320" height="128"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="X9G-Xc-9lq"/>
@@ -108,6 +108,89 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
+        </scene>
+        <!--Img View Controller-->
+        <scene sceneID="qAs-hk-j4b">
+            <objects>
+                <viewController storyboardIdentifier="ImgViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="c0B-Gk-DjX" customClass="ImgViewController" customModule="choosephoto" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lWa-tP-d3a"/>
+                        <viewControllerLayoutGuide type="bottom" id="I0C-hg-Zx9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Pr7-pX-lrZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GG4-Gf-lhr">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Iw4-Ry-a9a">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <gestureRecognizers/>
+                                    </imageView>
+                                </subviews>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Iw4-Ry-a9a" secondAttribute="bottom" id="1IZ-WZ-Xbp"/>
+                                    <constraint firstItem="Iw4-Ry-a9a" firstAttribute="centerY" secondItem="GG4-Gf-lhr" secondAttribute="centerY" id="EZ0-yf-KhM"/>
+                                    <constraint firstItem="Iw4-Ry-a9a" firstAttribute="centerX" secondItem="GG4-Gf-lhr" secondAttribute="centerX" id="Gsx-9n-YDO"/>
+                                    <constraint firstItem="Iw4-Ry-a9a" firstAttribute="top" secondItem="GG4-Gf-lhr" secondAttribute="top" id="Lxi-dr-RXD"/>
+                                    <constraint firstAttribute="trailing" secondItem="Iw4-Ry-a9a" secondAttribute="trailing" id="fJ4-5b-eFX"/>
+                                    <constraint firstItem="Iw4-Ry-a9a" firstAttribute="leading" secondItem="GG4-Gf-lhr" secondAttribute="leading" id="mP7-uX-qdS"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="C6v-4m-DWM" appends="YES" id="DIu-4y-ek1"/>
+                                    <outletCollection property="gestureRecognizers" destination="avR-YH-9tP" appends="YES" id="gvh-9A-VJN"/>
+                                </connections>
+                            </scrollView>
+                            <tabBar tag="1000" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="Rmg-GS-fXN">
+                                <rect key="frame" x="0.0" y="519" width="320" height="49"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29545697773972601" colorSpace="custom" customColorSpace="sRGB"/>
+                                <items>
+                                    <tabBarItem tag="1001" title="返回" id="5Qz-d9-p73"/>
+                                    <tabBarItem tag="1003" title="复位" id="LcB-vt-AVD"/>
+                                    <tabBarItem tag="1002" title="保存" id="Hax-m4-06S"/>
+                                    <tabBarItem tag="1004" title="分享" id="m2Y-wP-Kad"/>
+                                </items>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="selectedImageTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tabBar>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="GG4-Gf-lhr" firstAttribute="trailing" secondItem="Rmg-GS-fXN" secondAttribute="trailing" id="FUL-Dc-s3P"/>
+                            <constraint firstItem="GG4-Gf-lhr" firstAttribute="bottom" secondItem="Rmg-GS-fXN" secondAttribute="bottom" id="Kba-IW-Rd8"/>
+                            <constraint firstItem="GG4-Gf-lhr" firstAttribute="leading" secondItem="Rmg-GS-fXN" secondAttribute="leading" id="Leu-st-WzS"/>
+                            <constraint firstItem="GG4-Gf-lhr" firstAttribute="leading" secondItem="Pr7-pX-lrZ" secondAttribute="leading" id="WHT-mX-rfb"/>
+                            <constraint firstItem="GG4-Gf-lhr" firstAttribute="bottom" secondItem="I0C-hg-Zx9" secondAttribute="top" id="WNX-b0-6UD"/>
+                            <constraint firstAttribute="trailing" secondItem="GG4-Gf-lhr" secondAttribute="trailing" id="cdA-wv-gtl"/>
+                            <constraint firstItem="GG4-Gf-lhr" firstAttribute="top" secondItem="Pr7-pX-lrZ" secondAttribute="top" id="oEy-32-bTk"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="C6v-4m-DWM" appends="YES" id="vBZ-XJ-gIT"/>
+                            <outletCollection property="gestureRecognizers" destination="avR-YH-9tP" appends="YES" id="3h6-P4-TDn"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="图片框" destination="Iw4-Ry-a9a" id="7KU-No-3fX"/>
+                        <outlet property="底部工具栏" destination="Rmg-GS-fXN" id="6bE-J2-5go"/>
+                        <outlet property="滚动框" destination="GG4-Gf-lhr" id="bra-MQ-Qhc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iXJ-Sb-sSx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pinchGestureRecognizer id="C6v-4m-DWM">
+                    <connections>
+                        <action selector="双指拖动:" destination="c0B-Gk-DjX" id="PKG-pR-C0R"/>
+                    </connections>
+                </pinchGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="avR-YH-9tP">
+                    <connections>
+                        <action selector="单指拖动:" destination="c0B-Gk-DjX" id="WKV-CP-BaB"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="900" y="123.59154929577466"/>
         </scene>
     </scenes>
 </document>
