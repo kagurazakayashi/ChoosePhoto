@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import QuartzCore
 
-public let 全局主题颜色:[CGColor] = [UIColor(red: 0, green: 158/255, blue: 212/255, alpha: 1).cgColor,UIColor(red: 39/255, green: 224/255, blue: 36/255, alpha: 1).cgColor,UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1).cgColor]
+public let 全局主题颜色:[CGColor] = [UIColor(red: 0, green: 158/255, blue: 212/255, alpha: 1).cgColor,UIColor(red: 39/255, green: 224/255, blue: 36/255, alpha: 1).cgColor,UIColor(red: 241/255, green: 158/255, blue: 194/255, alpha: 1).cgColor]
 public let 全局故事板:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, UIAlertViewDelegate, UITabBarDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -18,7 +18,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     @IBOutlet weak var 图像列表框: UICollectionView!
     @IBOutlet weak var 实时预览框: UIImageView!
     @IBOutlet weak var 底部工具栏: UITabBar!
-    @IBOutlet weak var 实时预览框高度: NSLayoutConstraint!
     
     var 摄像头权限: AVAuthorizationStatus!
     var 视频捕获预览: AVCaptureVideoPreviewLayer!
@@ -38,7 +37,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         底部工具栏.delegate = self
         if 检查是否有摄像头权限() == false {
             print("没有权限访问摄像头")
-            return
         }
         视频捕获会话 = AVCaptureSession()
         视频捕获输出 = AVCaptureVideoDataOutput()
@@ -50,6 +48,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             print("照相机初始化失败")
             return
         }
+        视频捕获会话.startRunning()
     }
     
     func 初始化外观() {
@@ -62,7 +61,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        return UIStatusBarStyle.default
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
@@ -86,7 +85,10 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                 补光()
                 break
             case 1005: //前后摄像头切换
-                前后摄像头切换()
+                if (前后摄像头切换() == false)
+                {
+                    print("切换失败或设备没有前摄像头")
+                }
                 break
             default:
                 break
@@ -224,38 +226,32 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     
     func 检查是否有摄像头权限() -> Bool {
-        switch AVCaptureDevice.authorizationStatus(for: AVMediaType.video) {
-        case AVAuthorizationStatus.authorized:
-            //已获得相关权限
-            摄像头权限 = AVAuthorizationStatus.authorized
-            return true
-        case AVAuthorizationStatus.notDetermined:
+        摄像头权限 = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+        if 摄像头权限 == AVAuthorizationStatus.notDetermined {
             AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { (granted: Bool) -> Void in
                 if(granted){
+                    self.摄像头权限 = AVAuthorizationStatus.authorized
+                } else {
                     self.摄像头权限 = AVAuthorizationStatus.restricted
-                    print("没有摄像头访问权限！")
                 }
             })
-            return false
-        case AVAuthorizationStatus.denied:
-            AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { (已授权: Bool) -> Void in
-                if(!已授权){
-                    self.摄像头权限 = AVAuthorizationStatus.denied
+        }
+        if 摄像头权限 == AVAuthorizationStatus.authorized {
+            //已获得相关权限
+            return true
+        }
+        if ( 摄像头权限 == AVAuthorizationStatus.denied || 摄像头权限 == AVAuthorizationStatus.restricted ) {
                     let 摄像头权限申请提示框:UIAlertController = UIAlertController(title: "需要摄像头权限", message: "你需要在系统设置中允许我访问摄像头，要现在跳转到设置吗？", preferredStyle: UIAlertControllerStyle.alert)
                     摄像头权限申请提示框.addAction(UIAlertAction(title: "进入设置", style: UIAlertActionStyle.default, handler: { (此摄像头权限申请提示框:UIAlertAction) in
-                        //Y
+                        self.打开系统设置页面()
                     }))
                     摄像头权限申请提示框.addAction(UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel, handler: { (此摄像头权限申请提示框:UIAlertAction) in
                         //N
                     }))
                     self.present(摄像头权限申请提示框, animated: true, completion: nil)
-                }
-            })
-            return false
-        default:
-            print("摄像头访问权限未知。")
             return false
         }
+        return false
     }
     
     func 初始化照相机() -> Bool {
@@ -314,14 +310,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        if UIDevice.current.orientation == .portrait{
-            实时预览框高度.constant = 225
-        } else{
-            实时预览框高度.constant = 170
-        }
-    }
-    
     func 输出预览图像(当前图片:CGImage?) {
         var 图片旋转方向:UIImageOrientation = UIImageOrientation.right
         switch UIDevice.current.orientation {
@@ -352,7 +340,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        视频捕获会话.startRunning()
     }
     override func viewWillDisappear(_ animated: Bool) {
         视频捕获会话.stopRunning()

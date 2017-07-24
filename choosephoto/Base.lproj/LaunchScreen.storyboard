@@ -33,7 +33,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="8cT-wF-GE5">
+                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="8cT-wF-GE5">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" name="selectedControlColor" catalog="System" colorSpace="catalog"/>
                             </imageView>
@@ -42,12 +42,12 @@
                         <constraints>
                             <constraint firstItem="uyq-mg-q8c" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="1El-74-M4s"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="lqW-Vz-PCk" secondAttribute="bottom" constant="11" id="9yc-hd-jFO"/>
-                            <constraint firstItem="8cT-wF-GE5" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Rve-H8-0Tx"/>
+                            <constraint firstItem="8cT-wF-GE5" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="GjC-W6-Kdp"/>
+                            <constraint firstItem="8cT-wF-GE5" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="TMK-w9-RFT"/>
+                            <constraint firstAttribute="trailing" secondItem="8cT-wF-GE5" secondAttribute="trailing" id="VuT-2s-b9m"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="8cT-wF-GE5" secondAttribute="bottom" constant="64" id="YMf-Yp-Q6i"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="uyq-mg-q8c" secondAttribute="bottom" constant="30" id="YZg-aj-j0i"/>
-                            <constraint firstAttribute="trailing" secondItem="8cT-wF-GE5" secondAttribute="trailing" id="oTA-sD-IYe"/>
                             <constraint firstItem="lqW-Vz-PCk" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="uMR-iU-K89"/>
-                            <constraint firstItem="8cT-wF-GE5" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="yM4-vw-OiY"/>
                         </constraints>
                     </view>
                 </viewController>
