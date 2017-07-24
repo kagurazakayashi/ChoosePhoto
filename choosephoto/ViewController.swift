@@ -65,7 +65,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return UIStatusBarStyle.default
+        return UIStatusBarStyle.lightContent
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
@@ -209,6 +209,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         self.present(图片浏览器, animated: true) {
             print("打开图片浏览器")
         }
+        
+        // TODO:怎么又崩溃啊喵
         if (indexPath.row < 列表数据.count) {
             图片浏览器.装入图片(图片: 列表数据[indexPath.row])
         } else {
@@ -259,14 +261,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     func 初始化照相机() -> Bool {
         视频捕获会话.beginConfiguration()
-        视频捕获会话.sessionPreset = AVCaptureSession.Preset.vga640x480
+        视频捕获会话.sessionPreset = AVCaptureSession.Preset.medium
         let 视频像素模式K = kCVPixelBufferPixelFormatTypeKey as String
         let 视频像素模式V = NSNumber(value: kCVPixelFormatType_32BGRA)
-        let 视频像素宽度K = kCVPixelBufferWidthKey as String
-        let 视频像素宽度V = NSNumber(value: 1280)
-        let 视频像素高度K = kCVPixelBufferHeightKey as String
-        let 视频像素高度V = NSNumber(value: 720)
-        视频捕获输出.videoSettings = [视频像素模式K:视频像素模式V, 视频像素宽度K:视频像素宽度V, 视频像素高度K:视频像素高度V]
+//        let 视频像素宽度K = kCVPixelBufferWidthKey as String
+//        let 视频像素宽度V = NSNumber(value: 1280)
+//        let 视频像素高度K = kCVPixelBufferHeightKey as String
+//        let 视频像素高度V = NSNumber(value: 720)
+        视频捕获输出.videoSettings = [视频像素模式K:视频像素模式V] //, 视频像素宽度K:视频像素宽度V, 视频像素高度K:视频像素高度V]
         if(视频捕获会话.canAddOutput(视频捕获输出)){
             视频捕获会话.addOutput(视频捕获输出)
         } else {

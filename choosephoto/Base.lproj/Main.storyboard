@@ -46,18 +46,17 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="320" id="57j-JV-mTa"/>
                                     <constraint firstAttribute="height" constant="225" id="GkX-xD-Xfi"/>
-                                    <constraint firstAttribute="height" constant="170" id="oeQ-xX-aXE"/>
+                                    <constraint firstAttribute="height" constant="145" id="oeQ-xX-aXE"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="57j-JV-mTa"/>
-                                        <exclude reference="GkX-xD-Xfi"/>
                                         <exclude reference="oeQ-xX-aXE"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="GkX-xD-Xfi"/>
+                                        <exclude reference="GkX-xD-Xfi"/>
                                         <include reference="oeQ-xX-aXE"/>
                                     </mask>
                                 </variation>
@@ -114,16 +113,16 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Iqy-m2-8Bo" secondAttribute="bottom" id="7kG-53-9BQ"/>
+                            <constraint firstAttribute="bottom" secondItem="Iqy-m2-8Bo" secondAttribute="bottom" id="7kG-53-9BQ"/>
                             <constraint firstAttribute="trailing" secondItem="Xid-YU-bru" secondAttribute="trailing" id="AVp-hB-VYY"/>
                             <constraint firstAttribute="trailing" secondItem="Iqy-m2-8Bo" secondAttribute="trailing" id="EJa-LQ-I7w"/>
                             <constraint firstItem="Xid-YU-bru" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LLQ-4W-T09"/>
                             <constraint firstItem="EbZ-Wk-QLD" firstAttribute="top" secondItem="Xid-YU-bru" secondAttribute="bottom" id="M2D-aj-7GL"/>
                             <constraint firstItem="EbZ-Wk-QLD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="bDP-FR-M96"/>
                             <constraint firstAttribute="trailing" secondItem="EbZ-Wk-QLD" secondAttribute="trailing" id="bIb-1s-JUq"/>
-                            <constraint firstItem="Xid-YU-bru" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="qhJ-8r-EiQ"/>
+                            <constraint firstItem="Xid-YU-bru" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="qhJ-8r-EiQ"/>
                             <constraint firstItem="Iqy-m2-8Bo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="rp8-nt-BqR"/>
                             <constraint firstItem="Iqy-m2-8Bo" firstAttribute="top" secondItem="EbZ-Wk-QLD" secondAttribute="bottom" id="t8d-Uu-UY7"/>
                         </constraints>
@@ -175,6 +174,9 @@
                             <tabBar tag="1000" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="Rmg-GS-fXN">
                                 <rect key="frame" x="0.0" y="519" width="320" height="49"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29545697773972601" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="9q7-QA-mUn"/>
+                                </constraints>
                                 <items>
                                     <tabBarItem tag="1001" title="返回" image="chevron_left.png" id="5Qz-d9-p73"/>
                                     <tabBarItem tag="1003" title="复位" image="select_all.png" id="LcB-vt-AVD"/>
@@ -192,7 +194,7 @@
                             <constraint firstItem="GG4-Gf-lhr" firstAttribute="bottom" secondItem="Rmg-GS-fXN" secondAttribute="bottom" id="Kba-IW-Rd8"/>
                             <constraint firstItem="GG4-Gf-lhr" firstAttribute="leading" secondItem="Rmg-GS-fXN" secondAttribute="leading" id="Leu-st-WzS"/>
                             <constraint firstItem="GG4-Gf-lhr" firstAttribute="leading" secondItem="Pr7-pX-lrZ" secondAttribute="leading" id="WHT-mX-rfb"/>
-                            <constraint firstItem="GG4-Gf-lhr" firstAttribute="bottom" secondItem="I0C-hg-Zx9" secondAttribute="top" id="WNX-b0-6UD"/>
+                            <constraint firstItem="GG4-Gf-lhr" firstAttribute="bottom" secondItem="Pr7-pX-lrZ" secondAttribute="bottom" id="WNX-b0-6UD"/>
                             <constraint firstAttribute="trailing" secondItem="GG4-Gf-lhr" secondAttribute="trailing" id="cdA-wv-gtl"/>
                             <constraint firstItem="GG4-Gf-lhr" firstAttribute="top" secondItem="Pr7-pX-lrZ" secondAttribute="top" id="oEy-32-bTk"/>
                         </constraints>
