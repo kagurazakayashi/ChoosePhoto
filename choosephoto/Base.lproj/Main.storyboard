@@ -41,7 +41,7 @@
                                 </connections>
                             </tabBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EbZ-Wk-QLD">
-                                <rect key="frame" x="0.0" y="20" width="320" height="371"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="391"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hUZ-Tg-x1c">
                                     <size key="itemSize" width="128" height="128"/>
@@ -89,7 +89,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="EbZ-Wk-QLD" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="4ni-J4-KXS"/>
+                            <constraint firstItem="EbZ-Wk-QLD" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="4ni-J4-KXS"/>
                             <constraint firstItem="Xid-YU-bru" firstAttribute="top" secondItem="EbZ-Wk-QLD" secondAttribute="bottom" id="6Rb-1O-VjD"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Iqy-m2-8Bo" secondAttribute="bottom" id="7kG-53-9BQ"/>
                             <constraint firstItem="Iqy-m2-8Bo" firstAttribute="top" secondItem="Xid-YU-bru" secondAttribute="bottom" id="7uJ-rx-dNA"/>

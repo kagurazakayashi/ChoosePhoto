@@ -58,6 +58,10 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         缩略图布局.itemSize = CGSize(width: 图像列表框.frame.width / 3, height: 图像列表框.frame.height / 3)
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
 //        if (正在复位底部工具栏 == true) {
 //            正在复位底部工具栏 = false
@@ -193,8 +197,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let 图片浏览器:ImgViewController = 全局故事板.instantiateViewController(withIdentifier: "ImgViewController") as! ImgViewController
-        self.present(图片浏览器, animated: true, completion: nil)
-        图片浏览器.装入图片(图片: 列表数据[indexPath.row])
+        self.present(图片浏览器, animated: true) {
+            print("打开图片浏览器")
+        }
+        if (indexPath.row < 列表数据.count) {
+            图片浏览器.装入图片(图片: 列表数据[indexPath.row])
+        } else {
+            print("无效图片请求",indexPath.row,列表数据.count)
+        }
     }
     //</tabBar代理>
     func 打开系统设置页面() {
@@ -272,7 +282,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         return true
     }
     
-    func 从数据流创建图片(缓冲区:CMSampleBuffer!) -> UIImage? {
+    func 从数据流创建图片(缓冲区:CMSampleBuffer!) -> CGImage? {
         let 图片缓冲区:CVImageBuffer? = CMSampleBufferGetImageBuffer(缓冲区)
         if (图片缓冲区 == nil) {
             print("缓冲区中没有数据！")
@@ -288,16 +298,44 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         let 画布:CGContext = CGContext(data: 安全点, width: 宽度, height: 高度, bitsPerComponent: 8, bytesPerRow: 逐行大小, space: 色彩空间, bitmapInfo: 位图信息)!
         let 取出图片: CGImage = 画布.makeImage()!
         CVPixelBufferUnlockBaseAddress(图片缓冲区!, CVPixelBufferLockFlags(rawValue: 0))
-        return UIImage(cgImage: 取出图片, scale: 1, orientation: UIImageOrientation.right)
+        return 取出图片
     }
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         if (视频捕获启动 == false) {
             return
         }
-        let 当前图片 = 从数据流创建图片(缓冲区: sampleBuffer)
+        let 当前图片:CGImage? = 从数据流创建图片(缓冲区: sampleBuffer)
         DispatchQueue.main.async() { () -> Void in
-            self.实时预览框.image = 当前图片
+            self.输出预览图像(当前图片: 当前图片)
+        }
+    }
+    
+    func 输出预览图像(当前图片:CGImage?) {
+        var 图片旋转方向:UIImageOrientation = UIImageOrientation.right
+        switch UIDevice.current.orientation {
+//            case UIDeviceOrientation.portrait:
+//                图片旋转方向 = .right
+//                break
+            case UIDeviceOrientation.portraitUpsideDown:
+                图片旋转方向 = .down
+                break
+            case UIDeviceOrientation.landscapeLeft:
+                图片旋转方向 = .up
+                break
+            case UIDeviceOrientation.landscapeRight:
+                图片旋转方向 = .down
+                break
+//            case UIDeviceOrientation.faceUp:
+//                图片旋转方向 = .right
+//                break
+            default:
+                break
+        }
+        if 当前图片 == nil {
+            self.实时预览框.image = nil
+        } else {
+            self.实时预览框.image = UIImage(cgImage: 当前图片!, scale: 1, orientation: 图片旋转方向)
         }
     }
     

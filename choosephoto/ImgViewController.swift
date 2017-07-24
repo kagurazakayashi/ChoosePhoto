@@ -22,6 +22,10 @@ class ImgViewController: UIViewController, UITabBarDelegate {
         图片归位()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     func 装入图片(图片:UIImage) {
         图片框.image = 图片
     }
