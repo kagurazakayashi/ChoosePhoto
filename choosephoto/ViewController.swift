@@ -30,14 +30,18 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var 列表数据:[UIImage] = [UIImage]()
     var 正在使用后摄像头 = false
     var 缩略图布局 = UICollectionViewFlowLayout()
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if 检查是否有摄像头权限() == false {
+            print("没有权限访问摄像头")
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         初始化外观()
         底部工具栏.delegate = self
-        if 检查是否有摄像头权限() == false {
-            print("没有权限访问摄像头")
-        }
+        
         视频捕获会话 = AVCaptureSession()
         视频捕获输出 = AVCaptureVideoDataOutput()
         if 前后摄像头切换() == false {
@@ -249,7 +253,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                         //N
                     }))
                     self.present(摄像头权限申请提示框, animated: true, completion: nil)
-            return false
         }
         return false
     }
@@ -340,6 +343,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         视频捕获会话.stopRunning()
