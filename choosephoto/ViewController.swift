@@ -108,6 +108,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         } else if (实时预览框.image != nil) {
             列表数据.append(实时预览框.image!)
             图像列表框.reloadData()
+            AudioServicesPlaySystemSound(1108)
         }
     }
     func 补光() {
@@ -260,7 +261,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     func 初始化照相机() -> Bool {
         视频捕获会话.beginConfiguration()
-        视频捕获会话.sessionPreset = AVCaptureSession.Preset.medium
+        视频捕获会话.sessionPreset = AVCaptureSession.Preset.photo
         let 视频像素模式K = kCVPixelBufferPixelFormatTypeKey as String
         let 视频像素模式V = NSNumber(value: kCVPixelFormatType_32BGRA)
 //        let 视频像素宽度K = kCVPixelBufferWidthKey as String

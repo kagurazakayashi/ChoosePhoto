@@ -33,7 +33,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="ujY-Kg-BID">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="licon.png" translatesAutoresizingMaskIntoConstraints="NO" id="ujY-Kg-BID">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.59698504209518433" green="0.78041476011276245" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration">
@@ -60,6 +60,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon.png" width="2249" height="2249"/>
+        <image name="licon.png" width="2249" height="2249"/>
     </resources>
 </document>
