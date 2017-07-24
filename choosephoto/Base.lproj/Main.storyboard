@@ -40,8 +40,15 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="tKb-Wz-Cdx"/>
                                 </connections>
                             </tabBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xid-YU-bru">
+                                <rect key="frame" x="0.0" y="20" width="320" height="225"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="225" id="X9G-Xc-9lq"/>
+                                </constraints>
+                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EbZ-Wk-QLD">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="391"/>
+                                <rect key="frame" x="0.0" y="245" width="320" height="274"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hUZ-Tg-x1c">
                                     <size key="itemSize" width="128" height="128"/>
@@ -79,37 +86,31 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="RNz-Xf-fHq"/>
                                 </connections>
                             </collectionView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xid-YU-bru">
-                                <rect key="frame" x="0.0" y="391" width="320" height="128"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="X9G-Xc-9lq"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="EbZ-Wk-QLD" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="4ni-J4-KXS"/>
-                            <constraint firstItem="Xid-YU-bru" firstAttribute="top" secondItem="EbZ-Wk-QLD" secondAttribute="bottom" id="6Rb-1O-VjD"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Iqy-m2-8Bo" secondAttribute="bottom" id="7kG-53-9BQ"/>
-                            <constraint firstItem="Iqy-m2-8Bo" firstAttribute="top" secondItem="Xid-YU-bru" secondAttribute="bottom" id="7uJ-rx-dNA"/>
                             <constraint firstAttribute="trailing" secondItem="Xid-YU-bru" secondAttribute="trailing" id="AVp-hB-VYY"/>
                             <constraint firstAttribute="trailing" secondItem="Iqy-m2-8Bo" secondAttribute="trailing" id="EJa-LQ-I7w"/>
                             <constraint firstItem="Xid-YU-bru" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LLQ-4W-T09"/>
+                            <constraint firstItem="EbZ-Wk-QLD" firstAttribute="top" secondItem="Xid-YU-bru" secondAttribute="bottom" id="M2D-aj-7GL"/>
                             <constraint firstItem="EbZ-Wk-QLD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="bDP-FR-M96"/>
                             <constraint firstAttribute="trailing" secondItem="EbZ-Wk-QLD" secondAttribute="trailing" id="bIb-1s-JUq"/>
+                            <constraint firstItem="Xid-YU-bru" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="qhJ-8r-EiQ"/>
                             <constraint firstItem="Iqy-m2-8Bo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="rp8-nt-BqR"/>
+                            <constraint firstItem="Iqy-m2-8Bo" firstAttribute="top" secondItem="EbZ-Wk-QLD" secondAttribute="bottom" id="t8d-Uu-UY7"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="图像列表框" destination="EbZ-Wk-QLD" id="9Fa-KG-ecT"/>
                         <outlet property="实时预览框" destination="Xid-YU-bru" id="Mdi-MC-rCA"/>
+                        <outlet property="实时预览框高度" destination="X9G-Xc-9lq" id="8Pq-SH-3ye"/>
                         <outlet property="底部工具栏" destination="Iqy-m2-8Bo" id="Rfa-xf-o4Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
+            <point key="canvasLocation" x="116.25" y="123.59154929577466"/>
         </scene>
         <!--Img View Controller-->
         <scene sceneID="qAs-hk-j4b">

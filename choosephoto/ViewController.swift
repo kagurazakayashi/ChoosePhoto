@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import QuartzCore
 
-public let 全局主题颜色:[CGColor] = [UIColor(red: 0, green: 158/255, blue: 212/255, alpha: 1).cgColor,UIColor(red: 39/255, green: 224/255, blue: 36/255, alpha: 1).cgColor,UIColor(red: 226/255, green: 104/255, blue: 36/255, alpha: 1).cgColor]
+public let 全局主题颜色:[CGColor] = [UIColor(red: 0, green: 158/255, blue: 212/255, alpha: 1).cgColor,UIColor(red: 39/255, green: 224/255, blue: 36/255, alpha: 1).cgColor,UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1).cgColor]
 public let 全局故事板:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, UIAlertViewDelegate, UITabBarDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -18,6 +18,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     @IBOutlet weak var 图像列表框: UICollectionView!
     @IBOutlet weak var 实时预览框: UIImageView!
     @IBOutlet weak var 底部工具栏: UITabBar!
+    @IBOutlet weak var 实时预览框高度: NSLayoutConstraint!
     
     var 摄像头权限: AVAuthorizationStatus!
     var 视频捕获预览: AVCaptureVideoPreviewLayer!
@@ -55,7 +56,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         实时预览框.layer.borderWidth = 1
         实时预览框.layer.borderColor = 全局主题颜色[2]
         图像列表框.collectionViewLayout = 缩略图布局
-        缩略图布局.itemSize = CGSize(width: 图像列表框.frame.width / 3, height: 图像列表框.frame.height / 3)
+        缩略图布局.itemSize = CGSize(width: 图像列表框.frame.width / 2, height: 图像列表框.frame.height / 2)
+        缩略图布局.minimumLineSpacing = 10.0  //上下间隔
+        缩略图布局.minimumInteritemSpacing = 1.0 //左右间隔
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -308,6 +311,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         let 当前图片:CGImage? = 从数据流创建图片(缓冲区: sampleBuffer)
         DispatchQueue.main.async() { () -> Void in
             self.输出预览图像(当前图片: 当前图片)
+        }
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        if UIDevice.current.orientation == .portrait{
+            实时预览框高度.constant = 225
+        } else{
+            实时预览框高度.constant = 170
         }
     }
     
