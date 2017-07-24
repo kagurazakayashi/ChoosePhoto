@@ -198,10 +198,6 @@
                             <constraint firstAttribute="trailing" secondItem="GG4-Gf-lhr" secondAttribute="trailing" id="cdA-wv-gtl"/>
                             <constraint firstItem="GG4-Gf-lhr" firstAttribute="top" secondItem="Pr7-pX-lrZ" secondAttribute="top" id="oEy-32-bTk"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="C6v-4m-DWM" appends="YES" id="vBZ-XJ-gIT"/>
-                            <outletCollection property="gestureRecognizers" destination="avR-YH-9tP" appends="YES" id="3h6-P4-TDn"/>
-                        </connections>
                     </view>
                     <connections>
                         <outlet property="图片框" destination="Iw4-Ry-a9a" id="7KU-No-3fX"/>

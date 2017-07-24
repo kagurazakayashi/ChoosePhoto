@@ -30,6 +30,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var 列表数据:[UIImage] = [UIImage]()
     var 正在使用后摄像头 = false
     var 缩略图布局 = UICollectionViewFlowLayout()
+    var 可以暂存的图片数量:Int = 100
     
     override func viewDidAppear(_ animated: Bool) {
         if 检查是否有摄像头权限() == false {
@@ -102,8 +103,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     
     func 缓存照片() {
-        if 列表数据.count > 30 {
-            print("一次只能临时保存30张。")
+        if 列表数据.count > 可以暂存的图片数量 {
+            print("一次只能临时保存\(可以暂存的图片数量)张。")
         } else if (实时预览框.image != nil) {
             列表数据.append(实时预览框.image!)
             图像列表框.reloadData()
@@ -207,10 +208,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let 图片浏览器:ImgViewController = 全局故事板.instantiateViewController(withIdentifier: "ImgViewController") as! ImgViewController
         self.present(图片浏览器, animated: true) {
-            print("打开图片浏览器")
+            //print("打开图片浏览器")
         }
-        
-        // TODO:怎么又崩溃啊喵
         if (indexPath.row < 列表数据.count) {
             图片浏览器.装入图片(图片: 列表数据[indexPath.row])
         } else {
@@ -353,9 +352,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        print("内存不足！")
+        可以暂存的图片数量 = 列表数据.count
+        print("发生内存不足。一次将只能临时保存\(可以暂存的图片数量)张。")
     }
-    
-    
 }
 
