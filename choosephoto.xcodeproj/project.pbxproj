@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		530DAF701F2398FE009EFF97 /* ImgCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530DAF6F1F2398FE009EFF97 /* ImgCollectionViewCell.swift */; };
+		532D898D1F258FD8008D2E31 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 532D898C1F258D2C008D2E31 /* icon.png */; };
 		53CDF0731F24A52D00537BC6 /* ImgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CDF0721F24A52D00537BC6 /* ImgViewController.swift */; };
 		53CDF0BD1F24F1FB00537BC6 /* add_a_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 53CDF0A71F24EFC500537BC6 /* add_a_photo.png */; };
 		53CDF0BE1F24F1FB00537BC6 /* add_a_photo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53CDF0B11F24EFC500537BC6 /* add_a_photo@2x.png */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		530DAF6F1F2398FE009EFF97 /* ImgCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgCollectionViewCell.swift; sourceTree = "<group>"; };
+		532D898C1F258D2C008D2E31 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		537169EA1F22E32D00B3737A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		53CDF0711F249A8E00537BC6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		53CDF0721F24A52D00537BC6 /* ImgViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 		53CDF0741F24EFA200537BC6 /* img */ = {
 			isa = PBXGroup;
 			children = (
+				532D898C1F258D2C008D2E31 /* icon.png */,
 				53CDF0DC1F24F34000537BC6 /* share.png */,
 				53CDF0DD1F24F34000537BC6 /* share@2x.png */,
 				53CDF0DB1F24F34000537BC6 /* share@3x.png */,
@@ -237,6 +240,7 @@
 				53CDF0E01F24F34600537BC6 /* share@3x.png in Resources */,
 				53CDF0C41F24F1FB00537BC6 /* chevron_left@2x.png in Resources */,
 				53CDF0D01F24F1FB00537BC6 /* select_all@2x.png in Resources */,
+				532D898D1F258FD8008D2E31 /* icon.png in Resources */,
 				53CDF0C91F24F1FB00537BC6 /* lightbulb_outline.png in Resources */,
 				53CDF0C21F24F1FB00537BC6 /* build@3x.png in Resources */,
 				53CDF0C51F24F1FB00537BC6 /* chevron_left@3x.png in Resources */,
