@@ -31,6 +31,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var 正在使用后摄像头 = false
     var 缩略图布局 = UICollectionViewFlowLayout()
     var 可以暂存的图片数量:Int = 100
+    let 设置:Settings = Settings()
     
     override func viewDidAppear(_ animated: Bool) {
         if 检查是否有摄像头权限() == false {
@@ -40,11 +41,15 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        设置.载入设置()
         初始化外观()
         底部工具栏.delegate = self
-        
+        if 设置.默认摄像头 == 1 {
+            正在使用后摄像头 = true
+        }
         视频捕获会话 = AVCaptureSession()
         视频捕获输出 = AVCaptureVideoDataOutput()
+        
         if 前后摄像头切换() == false {
             print("摄像头获取失败")
             return
@@ -261,9 +266,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     func 初始化照相机() -> Bool {
         视频捕获会话.beginConfiguration()
-        视频捕获会话.sessionPreset = AVCaptureSession.Preset.photo
+        视频捕获会话.sessionPreset = 设置.拍摄品质
         let 视频像素模式K = kCVPixelBufferPixelFormatTypeKey as String
-        let 视频像素模式V = NSNumber(value: kCVPixelFormatType_32BGRA)
+        let 视频像素模式V = 设置.色彩格式
 //        let 视频像素宽度K = kCVPixelBufferWidthKey as String
 //        let 视频像素宽度V = NSNumber(value: 1280)
 //        let 视频像素高度K = kCVPixelBufferHeightKey as String

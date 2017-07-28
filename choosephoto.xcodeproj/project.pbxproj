@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		530DAF701F2398FE009EFF97 /* ImgCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530DAF6F1F2398FE009EFF97 /* ImgCollectionViewCell.swift */; };
 		534E5CD31F2624FD002FE9A6 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 534E5CD21F2624FD002FE9A6 /* Settings.bundle */; };
+		53679A681F2B573C00167243 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53679A671F2B573C00167243 /* Settings.swift */; };
 		53CDF0731F24A52D00537BC6 /* ImgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CDF0721F24A52D00537BC6 /* ImgViewController.swift */; };
 		53CDF0BD1F24F1FB00537BC6 /* add_a_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 53CDF0A71F24EFC500537BC6 /* add_a_photo.png */; };
 		53CDF0BE1F24F1FB00537BC6 /* add_a_photo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53CDF0B11F24EFC500537BC6 /* add_a_photo@2x.png */; };
@@ -49,6 +50,7 @@
 		530DAF6F1F2398FE009EFF97 /* ImgCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgCollectionViewCell.swift; sourceTree = "<group>"; };
 		532D898C1F258D2C008D2E31 /* licon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = licon.png; sourceTree = "<group>"; };
 		534E5CD21F2624FD002FE9A6 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		53679A671F2B573C00167243 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		537169EA1F22E32D00B3737A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		53CDF0711F249A8E00537BC6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		53CDF0721F24A52D00537BC6 /* ImgViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				530DAF6F1F2398FE009EFF97 /* ImgCollectionViewCell.swift */,
 				53CDF0721F24A52D00537BC6 /* ImgViewController.swift */,
 				534E5CD21F2624FD002FE9A6 /* Settings.bundle */,
+				53679A671F2B573C00167243 /* Settings.swift */,
 			);
 			path = choosephoto;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				53EAA43E1F224849005CEBA5 /* AppDelegate.swift in Sources */,
 				53CDF0731F24A52D00537BC6 /* ImgViewController.swift in Sources */,
 				530DAF701F2398FE009EFF97 /* ImgCollectionViewCell.swift in Sources */,
+				53679A681F2B573C00167243 /* Settings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
