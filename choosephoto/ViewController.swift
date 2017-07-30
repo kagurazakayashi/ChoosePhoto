@@ -43,6 +43,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         super.viewDidLoad()
         设置.载入设置()
         初始化外观()
+//        NotificationCenter.default.addObserver(self, selector: Selector(收到通知()), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         底部工具栏.delegate = self
         if 设置.默认摄像头 == 1 {
             正在使用后摄像头 = true
@@ -60,14 +61,16 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
         视频捕获会话.startRunning()
     }
-    
+    func 收到通知() {
+        print("收到通知")
+    }
     func 初始化外观() {
         实时预览框.layer.borderWidth = 1
         实时预览框.layer.borderColor = 全局主题颜色[2]
-        图像列表框.collectionViewLayout = 缩略图布局
-        缩略图布局.itemSize = CGSize(width: 图像列表框.frame.width / 2, height: 图像列表框.frame.height / 2)
-        缩略图布局.minimumLineSpacing = 10.0  //上下间隔
-        缩略图布局.minimumInteritemSpacing = 1.0 //左右间隔
+//        图像列表框.collectionViewLayout = 缩略图布局
+//        缩略图布局.itemSize = CGSize(width: 图像列表框.frame.width / 设置.每行显示, height: 图像列表框.frame.height / 设置.每行显示)
+//        缩略图布局.minimumLineSpacing = 10.0  //上下间隔
+//        缩略图布局.minimumInteritemSpacing = 1.0 //左右间隔
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -112,10 +115,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             print("一次只能临时保存\(可以暂存的图片数量)张。")
         } else if (实时预览框.image != nil) {
             列表数据.append(实时预览框.image!)
+            设置内容块()
             图像列表框.reloadData()
-            AudioServicesPlaySystemSound(1108)
+            if (设置.快门音效) {
+                AudioServicesPlaySystemSound(1108)
+            }
         }
     }
+    
     func 补光() {
         if !正在使用后摄像头 {
             print("前置摄像头没有闪光灯")
@@ -198,8 +205,21 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
         return nil
     }
-    
-    //<tabBar代理>
+    func 设置内容块() {
+        let 图像:UIImage? = 实时预览框.image
+        if 图像 == nil {
+            return
+        }
+        let 列宽度:CGFloat = self.view.frame.size.width / 设置.每行显示
+        let 列高度:CGFloat = 图像!.size.height / 图像!.size.width * 列宽度
+        
+        let 内容块:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        内容块.itemSize = CGSize(width: 列宽度, height: 列高度)
+        内容块.minimumInteritemSpacing = 0; //水平间距
+        内容块.minimumLineSpacing = 0; //垂直间距
+        图像列表框.collectionViewLayout = 内容块
+    }
+    //<代理>
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -208,7 +228,11 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let 列表项:ImgCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "imgcell", for: indexPath) as! ImgCollectionViewCell
-        列表项.设置缩略图(图片: 列表数据[indexPath.row])
+        let 图片:UIImage = 列表数据[indexPath.row]
+        let 列宽度:CGFloat = self.view.frame.size.width / 设置.每行显示
+        let 列高度:CGFloat = 图片.size.height / 图片.size.width * 列宽度
+//        列表项.frame = CGRect(x: 列表项.frame.origin.x, y: 列表项.frame.origin.y, width: 列宽度, height: 列高度)//CGSize(width: 列宽度, height: 列高度)
+        列表项.设置缩略图(图片: 图片)
         return 列表项
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -222,7 +246,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             print("无效图片请求",indexPath.row,列表数据.count)
         }
     }
-    //</tabBar代理>
+    //</代理>r
     func 打开系统设置页面() {
         let 系统设置页面地址:URL = URL(string: UIApplicationOpenSettingsURLString)!
         if UIApplication.shared.canOpenURL(系统设置页面地址) {

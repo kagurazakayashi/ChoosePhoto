@@ -73,10 +73,10 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EbZ-Wk-QLD">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" indicatorStyle="black" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EbZ-Wk-QLD">
                                 <rect key="frame" x="0.0" y="245" width="320" height="274"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hUZ-Tg-x1c">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="hUZ-Tg-x1c">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -96,10 +96,10 @@
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="NVs-tj-62G" firstAttribute="top" secondItem="UT6-S9-gUw" secondAttribute="top" id="ZaH-98-7Iy"/>
-                                            <constraint firstItem="NVs-tj-62G" firstAttribute="leading" secondItem="UT6-S9-gUw" secondAttribute="leading" id="bMc-i2-V0m"/>
-                                            <constraint firstAttribute="trailing" secondItem="NVs-tj-62G" secondAttribute="trailing" id="jzI-WD-cfu"/>
-                                            <constraint firstAttribute="bottom" secondItem="NVs-tj-62G" secondAttribute="bottom" id="y0X-uw-ZjA"/>
+                                            <constraint firstItem="NVs-tj-62G" firstAttribute="top" secondItem="UT6-S9-gUw" secondAttribute="top" id="6xb-bc-zdD"/>
+                                            <constraint firstItem="NVs-tj-62G" firstAttribute="leading" secondItem="UT6-S9-gUw" secondAttribute="leading" id="Bzp-re-2gD"/>
+                                            <constraint firstAttribute="bottom" secondItem="NVs-tj-62G" secondAttribute="bottom" id="H4c-Zz-sQk"/>
+                                            <constraint firstAttribute="trailing" secondItem="NVs-tj-62G" secondAttribute="trailing" id="gFx-uc-9NW"/>
                                         </constraints>
                                         <size key="customSize" width="100" height="100"/>
                                         <connections>

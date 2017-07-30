@@ -14,7 +14,7 @@ class Settings: NSObject {
     var 色彩格式:Int = 1111970369
     var 默认摄像头:Int = 0
     var 快门音效:Bool = true
-    var 每行显示:Int = 2
+    var 每行显示:CGFloat = 2
     var 清空时不需要确认:Bool = true
     var 点击HOME按钮时完全退出:Bool = false
     var 缓存限制:Int = 100
@@ -71,7 +71,7 @@ class Settings: NSObject {
             快门音效 = 配置文件.object(forKey: "快门音效") as! Bool
         }
         if 配置文件.object(forKey: "每行显示") != nil {
-            每行显示 = 配置文件.object(forKey: "每行显示") as! Int
+            每行显示 = CGFloat(配置文件.object(forKey: "每行显示") as! Int)
         }
         if 配置文件.object(forKey: "清空时不需要确认") != nil {
             清空时不需要确认 = 配置文件.object(forKey: "清空时不需要确认") as! Bool
