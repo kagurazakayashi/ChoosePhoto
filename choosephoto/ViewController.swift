@@ -196,7 +196,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         视频捕获启动 = false
     }
     func 获得摄像头(摄像头位置:AVCaptureDevice.Position) -> AVCaptureDevice? {
-        let 视频设备会话:AVCaptureDevice.DiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInWideAngleCamera], mediaType: AVMediaType.video, position: 摄像头位置)
+        let 视频设备会话:AVCaptureDevice.DiscoverySession = AVCaptureDevice.DiscoverySession(__deviceTypes: [AVCaptureDevice.DeviceType.builtInWideAngleCamera], mediaType: AVMediaType.video, position: 摄像头位置)
         let 视频设备列表 = 视频设备会话.devices
         for 视频设备:AVCaptureDevice in 视频设备列表 {
             if 视频设备.position == 摄像头位置 {
@@ -210,10 +210,19 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         if 图像 == nil {
             return
         }
-//        UIDevice.current.orientation
-        let 列宽度:CGFloat = self.view.frame.size.width / 设置.每行显示
-        let 列高度:CGFloat = 图像!.size.height / 图像!.size.width * 列宽度
-        
+        var 列宽度:CGFloat
+        var 列高度:CGFloat
+        if  大小 != nil {
+            列宽度 = (大小?.width)! / 设置.每行显示
+            if UIDevice.current.orientation.isPortrait == true {
+                列高度 = 图像!.size.width / 图像!.size.height * 列宽度
+            } else {
+                列高度 = 图像!.size.height / 图像!.size.width * 列宽度
+            }
+        } else {
+            列宽度 = self.view.frame.size.width / 设置.每行显示
+            列高度 = 图像!.size.height / 图像!.size.width * 列宽度
+        }
         let 内容块:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         内容块.itemSize = CGSize(width: 列宽度, height: 列高度)
         内容块.minimumInteritemSpacing = 0; //水平间距
@@ -231,8 +240,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let 列表项:ImgCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "imgcell", for: indexPath) as! ImgCollectionViewCell
         let 图片:UIImage = 列表数据[indexPath.row]
-        let 列宽度:CGFloat = self.view.frame.size.width / 设置.每行显示
-        let 列高度:CGFloat = 图片.size.height / 图片.size.width * 列宽度
+//        let 列宽度:CGFloat = self.view.frame.size.width / 设置.每行显示
+//        let 列高度:CGFloat = 图片.size.height / 图片.size.width * 列宽度
 //        列表项.frame = CGRect(x: 列表项.frame.origin.x, y: 列表项.frame.origin.y, width: 列宽度, height: 列高度)//CGSize(width: 列宽度, height: 列高度)
         列表项.设置缩略图(图片: 图片)
         return 列表项
