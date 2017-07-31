@@ -115,7 +115,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             print("一次只能临时保存\(可以暂存的图片数量)张。")
         } else if (实时预览框.image != nil) {
             列表数据.append(实时预览框.image!)
-            设置内容块()
+            设置内容块(大小: nil)
             图像列表框.reloadData()
             if (设置.快门音效) {
                 AudioServicesPlaySystemSound(1108)
@@ -205,11 +205,12 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
         return nil
     }
-    func 设置内容块() {
+    func 设置内容块(大小:CGSize?) {
         let 图像:UIImage? = 实时预览框.image
         if 图像 == nil {
             return
         }
+//        UIDevice.current.orientation
         let 列宽度:CGFloat = self.view.frame.size.width / 设置.每行显示
         let 列高度:CGFloat = 图像!.size.height / 图像!.size.width * 列宽度
         
@@ -218,6 +219,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         内容块.minimumInteritemSpacing = 0; //水平间距
         内容块.minimumLineSpacing = 0; //垂直间距
         图像列表框.collectionViewLayout = 内容块
+        图像列表框.reloadData()
     }
     //<代理>
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -370,6 +372,10 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         } else {
             self.实时预览框.image = UIImage(cgImage: 当前图片!, scale: 1, orientation: 图片旋转方向)
         }
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        设置内容块(大小: size)
     }
     
     override func viewWillAppear(_ animated: Bool) {
