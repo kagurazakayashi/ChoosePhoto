@@ -196,7 +196,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         视频捕获启动 = false
     }
     func 获得摄像头(摄像头位置:AVCaptureDevice.Position) -> AVCaptureDevice? {
-        let 视频设备会话:AVCaptureDevice.DiscoverySession = AVCaptureDevice.DiscoverySession(__deviceTypes: [AVCaptureDevice.DeviceType.builtInWideAngleCamera], mediaType: AVMediaType.video, position: 摄像头位置)
+        let 视频设备会话:AVCaptureDevice.DiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInWideAngleCamera], mediaType: AVMediaType.video, position: 摄像头位置)
         let 视频设备列表 = 视频设备会话.devices
         for 视频设备:AVCaptureDevice in 视频设备列表 {
             if 视频设备.position == 摄像头位置 {

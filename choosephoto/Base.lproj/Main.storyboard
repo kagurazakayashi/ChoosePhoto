@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_0" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13147.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,17 +18,19 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tabBar tag="1000" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="Iqy-m2-8Bo">
-                                <rect key="frame" x="0.0" y="519" width="320" height="49"/>
+                                <rect key="frame" x="0.0" y="729" width="375" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="w9T-Sy-dkF"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem tag="1005" title="切换" image="switch_camera.png" id="liX-U7-wpA"/>
+                                    <tabBarItem tag="1005" title="切换" image="switch_camera.png" id="liX-U7-wpA">
+                                        <inset key="largeContentSizeImageInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
+                                    </tabBarItem>
                                     <tabBarItem tag="1004" title="补光" image="lightbulb_outline.png" id="PGz-Vk-yag"/>
                                     <tabBarItem tag="1002" title="拍摄" image="add_a_photo.png" id="X5J-LI-LCv"/>
                                     <tabBarItem tag="1001" title="清空" image="delete_forever.png" id="9er-fh-bMm"/>
@@ -41,7 +44,7 @@
                                 </connections>
                             </tabBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xid-YU-bru">
-                                <rect key="frame" x="0.0" y="20" width="320" height="225"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="225"/>
                                 <color key="backgroundColor" red="0.14553650518773131" green="0.14553650518773131" blue="0.14553650518773131" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="320" id="57j-JV-mTa"/>
@@ -74,7 +77,7 @@
                                 </variation>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" indicatorStyle="black" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EbZ-Wk-QLD">
-                                <rect key="frame" x="0.0" y="245" width="320" height="274"/>
+                                <rect key="frame" x="0.0" y="269" width="375" height="460"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="hUZ-Tg-x1c">
                                     <size key="itemSize" width="128" height="128"/>
@@ -115,14 +118,14 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Iqy-m2-8Bo" secondAttribute="bottom" id="7kG-53-9BQ"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Iqy-m2-8Bo" secondAttribute="bottom" id="7kG-53-9BQ"/>
                             <constraint firstAttribute="trailing" secondItem="Xid-YU-bru" secondAttribute="trailing" id="AVp-hB-VYY"/>
                             <constraint firstAttribute="trailing" secondItem="Iqy-m2-8Bo" secondAttribute="trailing" id="EJa-LQ-I7w"/>
                             <constraint firstItem="Xid-YU-bru" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LLQ-4W-T09"/>
                             <constraint firstItem="EbZ-Wk-QLD" firstAttribute="top" secondItem="Xid-YU-bru" secondAttribute="bottom" id="M2D-aj-7GL"/>
                             <constraint firstItem="EbZ-Wk-QLD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="bDP-FR-M96"/>
                             <constraint firstAttribute="trailing" secondItem="EbZ-Wk-QLD" secondAttribute="trailing" id="bIb-1s-JUq"/>
-                            <constraint firstItem="Xid-YU-bru" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="qhJ-8r-EiQ"/>
+                            <constraint firstItem="Xid-YU-bru" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="qhJ-8r-EiQ"/>
                             <constraint firstItem="Iqy-m2-8Bo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="rp8-nt-BqR"/>
                             <constraint firstItem="Iqy-m2-8Bo" firstAttribute="top" secondItem="EbZ-Wk-QLD" secondAttribute="bottom" id="t8d-Uu-UY7"/>
                         </constraints>
@@ -146,57 +149,60 @@
                         <viewControllerLayoutGuide type="bottom" id="I0C-hg-Zx9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Pr7-pX-lrZ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GG4-Gf-lhr">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Iw4-Ry-a9a">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="685"/>
                                         <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="685" id="2mw-DI-ZXg"/>
+                                        </constraints>
                                     </imageView>
+                                    <tabBar tag="1000" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="Rmg-GS-fXN">
+                                        <rect key="frame" x="0.0" y="685" width="375" height="49"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29545697773972601" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="49" id="RFa-tu-p5P"/>
+                                        </constraints>
+                                        <items>
+                                            <tabBarItem tag="1001" title="返回" image="chevron_left.png" id="5Qz-d9-p73"/>
+                                            <tabBarItem tag="1003" title="复位" image="select_all.png" id="LcB-vt-AVD"/>
+                                            <tabBarItem tag="1002" title="保存" image="move_to_inbox.png" id="Hax-m4-06S"/>
+                                            <tabBarItem tag="1004" title="分享" image="share.png" id="m2Y-wP-Kad"/>
+                                        </items>
+                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="selectedImageTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tabBar>
                                 </subviews>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Iw4-Ry-a9a" secondAttribute="bottom" id="1IZ-WZ-Xbp"/>
-                                    <constraint firstItem="Iw4-Ry-a9a" firstAttribute="centerY" secondItem="GG4-Gf-lhr" secondAttribute="centerY" id="EZ0-yf-KhM"/>
-                                    <constraint firstItem="Iw4-Ry-a9a" firstAttribute="centerX" secondItem="GG4-Gf-lhr" secondAttribute="centerX" id="Gsx-9n-YDO"/>
-                                    <constraint firstItem="Iw4-Ry-a9a" firstAttribute="top" secondItem="GG4-Gf-lhr" secondAttribute="top" id="Lxi-dr-RXD"/>
-                                    <constraint firstAttribute="trailing" secondItem="Iw4-Ry-a9a" secondAttribute="trailing" id="fJ4-5b-eFX"/>
-                                    <constraint firstItem="Iw4-Ry-a9a" firstAttribute="leading" secondItem="GG4-Gf-lhr" secondAttribute="leading" id="mP7-uX-qdS"/>
+                                    <constraint firstItem="Iw4-Ry-a9a" firstAttribute="top" secondItem="GG4-Gf-lhr" secondAttribute="top" id="0LN-pP-bSh"/>
+                                    <constraint firstAttribute="bottom" secondItem="Rmg-GS-fXN" secondAttribute="bottom" id="CYO-tQ-yw5"/>
+                                    <constraint firstItem="Rmg-GS-fXN" firstAttribute="leading" secondItem="GG4-Gf-lhr" secondAttribute="leading" id="Wh2-fg-J7X"/>
+                                    <constraint firstAttribute="trailing" secondItem="Iw4-Ry-a9a" secondAttribute="trailing" id="Xag-m8-C8M"/>
+                                    <constraint firstItem="Iw4-Ry-a9a" firstAttribute="centerX" secondItem="GG4-Gf-lhr" secondAttribute="centerX" id="Xps-Zp-0g5"/>
+                                    <constraint firstItem="Rmg-GS-fXN" firstAttribute="trailing" secondItem="GG4-Gf-lhr" secondAttribute="trailing" id="Yf6-Sc-2rm"/>
+                                    <constraint firstItem="Iw4-Ry-a9a" firstAttribute="leading" secondItem="GG4-Gf-lhr" secondAttribute="leading" id="h9Q-EN-CAi"/>
+                                    <constraint firstItem="Rmg-GS-fXN" firstAttribute="top" secondItem="Iw4-Ry-a9a" secondAttribute="bottom" id="pR8-gl-vJf"/>
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="C6v-4m-DWM" appends="YES" id="DIu-4y-ek1"/>
                                     <outletCollection property="gestureRecognizers" destination="avR-YH-9tP" appends="YES" id="gvh-9A-VJN"/>
                                 </connections>
                             </scrollView>
-                            <tabBar tag="1000" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="Rmg-GS-fXN">
-                                <rect key="frame" x="0.0" y="519" width="320" height="49"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29545697773972601" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="9q7-QA-mUn"/>
-                                </constraints>
-                                <items>
-                                    <tabBarItem tag="1001" title="返回" image="chevron_left.png" id="5Qz-d9-p73"/>
-                                    <tabBarItem tag="1003" title="复位" image="select_all.png" id="LcB-vt-AVD"/>
-                                    <tabBarItem tag="1002" title="保存" image="move_to_inbox.png" id="Hax-m4-06S"/>
-                                    <tabBarItem tag="1004" title="分享" image="share.png" id="m2Y-wP-Kad"/>
-                                </items>
-                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="selectedImageTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="GG4-Gf-lhr" firstAttribute="trailing" secondItem="Rmg-GS-fXN" secondAttribute="trailing" id="FUL-Dc-s3P"/>
-                            <constraint firstItem="GG4-Gf-lhr" firstAttribute="bottom" secondItem="Rmg-GS-fXN" secondAttribute="bottom" id="Kba-IW-Rd8"/>
-                            <constraint firstItem="GG4-Gf-lhr" firstAttribute="leading" secondItem="Rmg-GS-fXN" secondAttribute="leading" id="Leu-st-WzS"/>
-                            <constraint firstItem="GG4-Gf-lhr" firstAttribute="leading" secondItem="Pr7-pX-lrZ" secondAttribute="leading" id="WHT-mX-rfb"/>
-                            <constraint firstItem="GG4-Gf-lhr" firstAttribute="bottom" secondItem="Pr7-pX-lrZ" secondAttribute="bottom" id="WNX-b0-6UD"/>
-                            <constraint firstAttribute="trailing" secondItem="GG4-Gf-lhr" secondAttribute="trailing" id="cdA-wv-gtl"/>
-                            <constraint firstItem="GG4-Gf-lhr" firstAttribute="top" secondItem="Pr7-pX-lrZ" secondAttribute="top" id="oEy-32-bTk"/>
+                            <constraint firstItem="GG4-Gf-lhr" firstAttribute="top" secondItem="Pr7-pX-lrZ" secondAttribute="topMargin" id="6xd-Yf-7La"/>
+                            <constraint firstItem="GG4-Gf-lhr" firstAttribute="leading" secondItem="Pr7-pX-lrZ" secondAttribute="leading" id="7Kd-0S-Bkz"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="GG4-Gf-lhr" secondAttribute="bottom" id="E2D-37-4ZF"/>
+                            <constraint firstAttribute="trailing" secondItem="GG4-Gf-lhr" secondAttribute="trailing" id="Kcf-hP-Wgi"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="GG4-Gf-lhr" secondAttribute="bottom" id="TU2-XJ-7Ev"/>
                         </constraints>
                     </view>
                     <connections>
@@ -217,7 +223,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="900" y="123.59154929577466"/>
+            <point key="canvasLocation" x="900" y="123.39901477832512"/>
         </scene>
     </scenes>
     <resources>
