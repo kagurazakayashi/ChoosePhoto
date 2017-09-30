@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -14,31 +14,11 @@
             <objects>
                 <viewController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="choosephoto" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tabBar tag="1000" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="Iqy-m2-8Bo">
-                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="w9T-Sy-dkF"/>
-                                </constraints>
-                                <items>
-                                    <tabBarItem tag="1005" title="切换" image="switch_camera.png" id="liX-U7-wpA"/>
-                                    <tabBarItem tag="1004" title="补光" image="lightbulb_outline.png" id="PGz-Vk-yag"/>
-                                    <tabBarItem tag="1002" title="拍摄" image="add_a_photo.png" id="X5J-LI-LCv"/>
-                                    <tabBarItem tag="1001" title="清空" image="delete_forever.png" id="9er-fh-bMm"/>
-                                    <tabBarItem tag="1003" title="设置" image="build.png" id="72q-qw-naV"/>
-                                </items>
-                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="selectedImageTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="tKb-Wz-Cdx"/>
-                                </connections>
-                            </tabBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xid-YU-bru">
-                                <rect key="frame" x="0.0" y="20" width="375" height="225"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="225"/>
                                 <color key="backgroundColor" red="0.14553650518773131" green="0.14553650518773131" blue="0.14553650518773131" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="320" id="57j-JV-mTa"/>
@@ -71,7 +51,7 @@
                                 </variation>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" indicatorStyle="black" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EbZ-Wk-QLD">
-                                <rect key="frame" x="0.0" y="245" width="375" height="373"/>
+                                <rect key="frame" x="0.0" y="269" width="375" height="460"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="hUZ-Tg-x1c">
                                     <size key="itemSize" width="128" height="128"/>
@@ -109,10 +89,27 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="RNz-Xf-fHq"/>
                                 </connections>
                             </collectionView>
+                            <tabBar tag="1000" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="Iqy-m2-8Bo">
+                                <rect key="frame" x="0.0" y="729" width="375" height="83"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem tag="1005" title="切换" image="switch_camera.png" id="liX-U7-wpA"/>
+                                    <tabBarItem tag="1004" title="补光" image="lightbulb_outline.png" id="PGz-Vk-yag"/>
+                                    <tabBarItem tag="1002" title="拍摄" image="add_a_photo.png" id="X5J-LI-LCv"/>
+                                    <tabBarItem tag="1001" title="清空" image="delete_forever.png" id="9er-fh-bMm"/>
+                                    <tabBarItem tag="1003" title="设置" image="build.png" id="72q-qw-naV"/>
+                                </items>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="selectedImageTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="tKb-Wz-Cdx"/>
+                                </connections>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="87y-QL-WNG" firstAttribute="bottom" secondItem="Iqy-m2-8Bo" secondAttribute="bottom" id="7kG-53-9BQ"/>
+                            <constraint firstAttribute="bottom" secondItem="Iqy-m2-8Bo" secondAttribute="bottom" id="7kG-53-9BQ"/>
                             <constraint firstItem="87y-QL-WNG" firstAttribute="trailing" secondItem="Xid-YU-bru" secondAttribute="trailing" id="AVp-hB-VYY"/>
                             <constraint firstItem="87y-QL-WNG" firstAttribute="trailing" secondItem="Iqy-m2-8Bo" secondAttribute="trailing" id="EJa-LQ-I7w"/>
                             <constraint firstItem="Xid-YU-bru" firstAttribute="leading" secondItem="87y-QL-WNG" secondAttribute="leading" id="LLQ-4W-T09"/>
@@ -140,14 +137,14 @@
             <objects>
                 <viewController storyboardIdentifier="ImgViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="c0B-Gk-DjX" customClass="ImgViewController" customModule="choosephoto" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pr7-pX-lrZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GG4-Gf-lhr">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Iw4-Ry-a9a">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                         <gestureRecognizers/>
                                     </imageView>
                                 </subviews>
@@ -166,11 +163,8 @@
                                 </connections>
                             </scrollView>
                             <tabBar tag="1000" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="Rmg-GS-fXN">
-                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <rect key="frame" x="0.0" y="729" width="375" height="83"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29545697773972601" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="9q7-QA-mUn"/>
-                                </constraints>
                                 <items>
                                     <tabBarItem tag="1001" title="返回" image="chevron_left.png" id="5Qz-d9-p73"/>
                                     <tabBarItem tag="1003" title="复位" image="select_all.png" id="LcB-vt-AVD"/>
@@ -185,7 +179,7 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Uw9-qW-302" firstAttribute="trailing" secondItem="Rmg-GS-fXN" secondAttribute="trailing" id="FUL-Dc-s3P"/>
-                            <constraint firstItem="Uw9-qW-302" firstAttribute="bottom" secondItem="Rmg-GS-fXN" secondAttribute="bottom" id="Kba-IW-Rd8"/>
+                            <constraint firstAttribute="bottom" secondItem="Rmg-GS-fXN" secondAttribute="bottom" id="Kba-IW-Rd8"/>
                             <constraint firstItem="Uw9-qW-302" firstAttribute="leading" secondItem="Rmg-GS-fXN" secondAttribute="leading" id="Leu-st-WzS"/>
                             <constraint firstItem="GG4-Gf-lhr" firstAttribute="leading" secondItem="Uw9-qW-302" secondAttribute="leading" id="WHT-mX-rfb"/>
                             <constraint firstItem="GG4-Gf-lhr" firstAttribute="bottom" secondItem="Pr7-pX-lrZ" secondAttribute="bottom" id="WNX-b0-6UD"/>
