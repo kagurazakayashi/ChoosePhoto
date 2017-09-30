@@ -19,8 +19,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     @IBOutlet weak var 实时预览框: UIImageView!
     @IBOutlet weak var 底部工具栏: UITabBar!
     
-    @IBOutlet weak var 底部工具栏高度: NSLayoutConstraint!
-    
     var 摄像头权限: AVAuthorizationStatus!
     var 视频捕获预览: AVCaptureVideoPreviewLayer!
     var 视频捕获会话: AVCaptureSession!
